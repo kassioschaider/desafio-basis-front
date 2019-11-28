@@ -1,19 +1,46 @@
-<form class="form mt-4">
-
+<form #f="ngForm" (ngSubmit)="onSave(f)">
   <div class="form-group">
-    <input class="form-control" placeholder="Nome" autofocus>
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome"
+      [(ngModel)]="empresa.nome">
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Endereço">
+    <label for="cnpj">CNPJ</label>
+    <input type="text" class="form-control" id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj"
+      placeholder="Insira o CNPJ">
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="CNPJ">
+    <label for="endereco">Endereço</label>
+    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Insira o endereço"
+      [(ngModel)]="empresa.endereco">
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block">
-    Cadastrar
-  </button>
-
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
+
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Endereço</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let empresa of empresas">
+      <th>{{empresa.id}}</th>
+      <td>{{empresa.nome}}</td>
+      <td>{{empresa.cnpj}}</td>
+      <td>{{empresa.endereco}}</td>
+      <td>
+        <button type="button" class="btn btn-light">Editar</button>
+        <button type="button" class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

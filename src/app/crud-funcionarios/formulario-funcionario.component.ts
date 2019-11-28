@@ -17,6 +17,7 @@ export class FormularioFuncionarioComponent implements OnInit {
     idEmpresa: 1
   }
 
+  empresa: Empresa;
   funcionarios: Funcionario[];
   empresas: Empresa[];
 
@@ -36,7 +37,12 @@ export class FormularioFuncionarioComponent implements OnInit {
       .subscribe(dados => { this.empresas = <Empresa[]>dados })
   }
 
-  onSubmit() {
+  getEmpresa(id: number) {
+
+  }
+
+  onSave() {
+    this.empresaService.deletarEmpresa(20);
     this.funcionarioSevice.addFuncionario(this.funcionario);
   }
 

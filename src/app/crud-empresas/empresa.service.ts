@@ -25,4 +25,13 @@ export class EmpresaService {
       .pipe()
       .subscribe(dados => dados);
   }
+
+  getEmpresa(id: number) {
+    return this.http
+      .post(this.resouceUrl + '/' + id.toString, this.httpOptions);
+  }
+
+  deletarEmpresa(id: number) {
+    this.http.delete(this.resouceUrl + '/' + id.toString, this.httpOptions);
+  }
 }

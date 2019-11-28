@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" (ngSubmit)="onSave(f)">
   <div class="form-group">
     <label for="nome">Nome</label>
     <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome"
@@ -27,3 +27,30 @@
 
   <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
+
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Data de Nascimento</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Empresa</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let funcionario of funcionarios">
+      <th>{{funcionario.id}}</th>
+      <td>{{funcionario.nome}}</td>
+      <td>{{funcionario.dataDeNascimento}}</td>
+      <td>{{funcionario.cpf}}</td>
+      <td></td>
+      <td>
+        <button type="button" class="btn btn-light">Editar</button>
+        <button type="button" class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
