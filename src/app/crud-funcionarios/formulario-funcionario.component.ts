@@ -42,8 +42,13 @@ export class FormularioFuncionarioComponent implements OnInit {
   }
 
   onSave() {
-    this.empresaService.deletarEmpresa(20);
-    this.funcionarioSevice.addFuncionario(this.funcionario);
+    this.funcionarioSevice.addFuncionario(this.funcionario)
+      .subscribe(dados => { dados => dados });
+  }
+
+  onDelete(id: number) {
+    this.funcionarioSevice.deletarFuncionario(id)
+      .subscribe(dados => { dados => dados });
   }
 
   ngOnInit() {

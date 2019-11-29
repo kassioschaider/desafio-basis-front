@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Empresa } from './empresa.component';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EmpresaService {
@@ -20,18 +21,17 @@ export class EmpresaService {
   }
 
   addEmpresa(empresa: Empresa) {
-    this.http
-      .post(this.resouceUrl, JSON.stringify(empresa), this.httpOptions)
-      .pipe()
-      .subscribe(dados => dados);
+    return this.http
+      .post(this.resouceUrl, JSON.stringify(empresa), this.httpOptions);
   }
 
   getEmpresa(id: number) {
     return this.http
-      .post(this.resouceUrl + '/' + id.toString, this.httpOptions);
+      .post(this.resouceUrl + '/' + JSON.stringify(id), this.httpOptions);
   }
 
   deletarEmpresa(id: number) {
-    this.http.delete(this.resouceUrl + '/' + id.toString, this.httpOptions);
+    return this.http
+      .delete(this.resouceUrl + '/' + JSON.stringify(id), this.httpOptions);
   }
 }

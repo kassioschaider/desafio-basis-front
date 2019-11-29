@@ -19,6 +19,10 @@ export class FormularioEmpresaComponent implements OnInit {
   constructor(
     private empresaService: EmpresaService) { }
 
+  ngOnInit() {
+    this.getAllEmpresas();
+  }
+
   getAllEmpresas() {
     this.empresaService
       .getAllEmpresas()
@@ -26,11 +30,21 @@ export class FormularioEmpresaComponent implements OnInit {
   }
 
   onSave() {
-    this.empresaService.addEmpresa(this.empresa);
+    this.empresaService
+      .addEmpresa(this.empresa)
+      .subscribe(dados => dados);
   }
 
-  ngOnInit() {
-    this.getAllEmpresas();
+  getEmpresa(id: number) {
+    return this.empresaService
+      .getEmpresa(id)
+      .subscribe(dados => dados);
+  }
+
+  onDelete(id: number) {
+    this.empresaService
+      .deletarEmpresa(id)
+      .subscribe(dados => dados);
   }
 
 }

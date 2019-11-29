@@ -48,8 +48,9 @@
       <td>{{funcionario.cpf}}</td>
       <td></td>
       <td>
-        <button type="button" class="btn btn-light">Editar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
+        <button type="button" class="btn btn-light" [value]="funcionario.id">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(funcionario.id)"
+          [value]="funcionario.id">Excluir</button>
       </td>
     </tr>
   </tbody>

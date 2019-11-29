@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class FuncionarioService {
 
   private resouceUrl = environment.apiUrl + '/funcionarios';
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -20,9 +21,11 @@ export class FuncionarioService {
   }
 
   addFuncionario(funcionario: Funcionario) {
-    this.http
-      .post(this.resouceUrl, JSON.stringify(funcionario), this.httpOptions)
-      .pipe()
-      .subscribe(dados => dados);
+    return this.http
+      .post(this.resouceUrl, JSON.stringify(funcionario), this.httpOptions);
+  }
+
+  deletarFuncionario(id: number) {
+    return this.http.delete(this.resouceUrl + '/' + JSON.stringify(id), this.httpOptions);
   }
 }
